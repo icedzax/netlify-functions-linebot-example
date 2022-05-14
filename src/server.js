@@ -36,10 +36,10 @@ function handleEvent(event) {
   if (event.type !== "message" || event.message.type !== "text") {
     return Promise.resolve(null);
   }
-  return cmd;
+  return cmd(event);
 }
 
-const cmd = () => {
+const cmd = (event) => {
   client.replyMessage(event.replyToken, {
     type: "text",
     text: event.message.text,
